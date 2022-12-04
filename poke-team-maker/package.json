@@ -44,12 +44,11 @@
       "last 1 safari version"
     ]
   },
-  "compilerOptions": {
-    "module": "commonjs",
-    "target": "es6",
-    "jsx": "react"
-  },
   "include": [
     "src"
-  ]
+  ],
+  "devDependencies": {
+    "eslint": "5.12.0",
+    "eslint-plugin-react": "^7.31.11"
+  }
 }

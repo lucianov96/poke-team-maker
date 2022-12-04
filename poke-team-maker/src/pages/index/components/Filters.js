@@ -1,8 +1,5 @@
 import React, {useState} from 'react';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
-import { Grid, FormControl, TextField, Button } from '@mui/material';
+import { Grid, FormControl, TextField, Button, InputLabel, MenuItem, Select } from '@mui/material';
 import {button} from "../../../styles/styles"
 
 export const Filters = () => {
@@ -16,35 +13,35 @@ export const Filters = () => {
     const [spDefenseCondition, setSDefenseCondition] = React.useState('');
     const [speedCondition, setSpeedCondition] = React.useState('');
 
-    const handleChangeType = (event: SelectChangeEvent) => {
+    const handleChangeType = (event) => {
         setType(event.target.value);
     };
 
-    const handleChangeType2 = (event: SelectChangeEvent) => {
+    const handleChangeType2 = (event) => {
         setType2(event.target.value);
     };
 
-    const handleChangePsCondition = (event: SelectChangeEvent) => {
+    const handleChangePsCondition = (event) => {
         setPsCondition(event.target.value);
     };
 
-    const handleChangeAttackCondition = (event: SelectChangeEvent) => {
+    const handleChangeAttackCondition = (event) => {
         setAttackCondition(event.target.value);
     };
 
-    const handleChangeDefenseCondition = (event: SelectChangeEvent) => {
+    const handleChangeDefenseCondition = (event) => {
         setDefenseCondition(event.target.value);
     };
 
-    const handleChangeSpAttackCondition = (event: SelectChangeEvent) => {
+    const handleChangeSpAttackCondition = (event) => {
         setSpAttackCondition(event.target.value);
     };
 
-    const handleChangeSpDefenseCondition = (event: SelectChangeEvent) => {
+    const handleChangeSpDefenseCondition = (event) => {
         setSDefenseCondition(event.target.value);
     };
 
-    const handleChangeSpeedCondition = (event: SelectChangeEvent) => {
+    const handleChangeSpeedCondition = (event) => {
         setSpeedCondition(event.target.value);
     };
 
