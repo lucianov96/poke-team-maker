@@ -1,17 +1,17 @@
 import React, {useState} from 'react';
 import { Grid, FormControl, TextField, Button, InputLabel, MenuItem, Select } from '@mui/material';
-import {button} from "../../../styles/styles"
+import {button, block} from "../../../styles/styles"
 
 export const Filters = () => {
 
-    const [type, setType] = React.useState('');
-    const [type2, setType2] = React.useState('');
-    const [psCondition, setPsCondition] = React.useState('');
-    const [attackCondition, setAttackCondition] = React.useState('');
-    const [defenseCondition, setDefenseCondition] = React.useState('');
-    const [spAttackCondition, setSpAttackCondition] = React.useState('');
-    const [spDefenseCondition, setSDefenseCondition] = React.useState('');
-    const [speedCondition, setSpeedCondition] = React.useState('');
+    const [type, setType] = useState('');
+    const [type2, setType2] = useState('');
+    const [psCondition, setPsCondition] = useState('');
+    const [attackCondition, setAttackCondition] = useState('');
+    const [defenseCondition, setDefenseCondition] = useState('');
+    const [spAttackCondition, setSpAttackCondition] = useState('');
+    const [spDefenseCondition, setSDefenseCondition] = useState('');
+    const [speedCondition, setSpeedCondition] = useState('');
 
     const handleChangeType = (event) => {
         setType(event.target.value);
@@ -91,7 +91,7 @@ export const Filters = () => {
     ]
 
     return (
-        <>
+        <div style={block}>
             <Grid container spacing={2}>
                 {textFieldList.map((textField) => {
                     return <Grid item xs={12}>
@@ -149,6 +149,6 @@ export const Filters = () => {
                     </Button>
                 </Grid>
             </Grid>
-        </>
+        </div>
     )
 }

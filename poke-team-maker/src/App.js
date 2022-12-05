@@ -1,13 +1,17 @@
 import React from 'react';
 import './App.css';
-import { Filters } from './pages/index/components/Filters';
+import { NavBar } from './components/NavBar';
+import { PokemonIndex } from './pages/index/components/PokemonIndex';
+import { block } from './styles/styles';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Filters/>
-      </header>
+      <NavBar/>
+        <div style={block}>
+          <PokemonIndex/>
+        </div>
     </div>
   );
 }
