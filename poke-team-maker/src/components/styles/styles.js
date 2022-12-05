@@ -14,3 +14,7 @@ export const collapsableSection = {
 export const arrowIcon = {
   marginLeft: "auto"
 }
+
+export const separator = {
+  minHeight: "6em"
+}

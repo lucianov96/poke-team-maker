@@ -3,6 +3,7 @@ import { Filters } from './Filters';
 import { Pokemons } from './Pokemons';
 import { Collapse, Typography } from '@mui/material';
 import { CollapsableSection } from '../../../components/CollapsableSection';
+import { h1 } from '../../../styles/styles';
 
 export const PokemonIndex = () => {
 
@@ -17,6 +18,7 @@ export const PokemonIndex = () => {
 
     return (
         <>
+            <h1 style={h1}>Pokemon finder</h1>
             <CollapsableSection text={"Filters"} open={open} onClick={handleOpen}/>
             <Collapse in={open} out={open}>
                 <Filters/>

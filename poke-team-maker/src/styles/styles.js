@@ -38,3 +38,8 @@ export const pointerImage = {
 export const block = {
   padding: "20px"
 }
+
+export const h1 = {
+  textAlign: "center",
+  marginTop: "0"
+}
