@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { Grid, FormControl, TextField, Button, InputLabel, MenuItem, Select } from '@mui/material';
 import {button, block} from "../../../styles/styles"
+import { TypePicture } from '../../../components/TypePicture';
 
 export const Filters = () => {
 
@@ -64,24 +65,24 @@ export const Filters = () => {
     ]
 
     const typesList = [
-        {value: "bug", text: "Bug"},
-        {value: "dark", text: "Dark"},
-        {value: "dragon", text: "Dragon"},
-        {value: "electric", text: "Electric"},
-        {value: "fairy", text: "Fairy"},
-        {value: "fighting", text: "Fighting"},
-        {value: "fire", text: "Fire"},
-        {value: "flying", text: "Flying"},
-        {value: "ghost", text: "Ghost"},
-        {value: "grass", text: "Grass"},
-        {value: "ground", text: "Ground"},
-        {value: "ice", text: "Ice"},
-        {value: "normal", text: "Normal"},
-        {value: "poison", text: "Poison"},
-        {value: "psychic", text: "Psychic"},
-        {value: "rock", text: "Rock"},
-        {value: "steel", text: "Steel"},
-        {value: "water", text: "Water"},
+        {value: "bug"},
+        {value: "dark"},
+        {value: "dragon"},
+        {value: "electric"},
+        {value: "fairy"},
+        {value: "fighting"},
+        {value: "fire"},
+        {value: "flying"},
+        {value: "ghost"},
+        {value: "grass"},
+        {value: "ground"},
+        {value: "ice"},
+        {value: "normal"},
+        {value: "poison"},
+        {value: "psychic"},
+        {value: "rock"},
+        {value: "steel"},
+        {value: "water"},
     ]
 
     const conditionList = [
@@ -112,7 +113,9 @@ export const Filters = () => {
                             sx={{width: "100%"}}
                             >
                                 {typesList.map((type) => {
-                                    return <MenuItem value={type.value}>{type.text}</MenuItem>
+                                    return <MenuItem value={type.value}>
+                                        <TypePicture name={type.value}/>
+                                    </MenuItem>
                                 })}
                             </Select>
                         </FormControl>

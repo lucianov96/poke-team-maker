@@ -43,3 +43,9 @@ export const h1 = {
   textAlign: "center",
   marginTop: "0"
 }
+
+export const h2 = {
+  fontSize: "1.2em",
+  marginTop: "0.3em",
+  marginBottom: "0.3em"
+}

@@ -4,7 +4,8 @@ import { Grid } from '@mui/material';
 import { CollapsableSection } from '../../../components/CollapsableSection';
 import { effectiveTitle } from '../styles/styles';
 import { Separator } from '../../../components/Separator';
-import { h1 } from '../../../styles/styles';
+import { h1, h2 } from '../../../styles/styles';
+import { TypePicture } from '../../../components/TypePicture';
 
 export const PokemonStatsIndex = () => {
 
@@ -24,14 +25,10 @@ export const PokemonStatsIndex = () => {
                         <img src="pokemon/448.png"/>
                     </div>
                     <div style={{fontSize: "1.2em"}}>
-                        Lucario
+                        <h2 style={h2}>Lucario</h2>
                     </div>
-                    <div>
-                        Fighting
-                    </div>
-                    <div>
-                        Steel
-                    </div>
+                    <TypePicture name={"grass"}/>
+                    <TypePicture name={"electric"}/>
                 </Grid>
                 <Grid item xs={10.5}>
                     <Stat name={"PS:"} value={200}/>

@@ -13,7 +13,7 @@ function App() {
         <div style={block}>
           {/*<PokemonIndex/>*/}
           {/*<PokemonStatsIndex/>*/}
-          <PokemonIndex/>
+          <PokemonStatsIndex/>
         </div>
     </div>
   );
