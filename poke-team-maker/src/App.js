@@ -7,13 +7,15 @@ import { block } from './styles/styles';
 
 
 function App() {
+
+  const [page, setPage] = React.useState(1);
+
   return (
     <div className="App">
-      <NavBar/>
+      <NavBar setPage={setPage}/>
         <div style={block}>
-          {/*<PokemonIndex/>*/}
-          {/*<PokemonStatsIndex/>*/}
-          <PokemonStatsIndex/>
+          {page == 1 && <PokemonIndex/>}
+          {page == 2 && <PokemonStatsIndex/>}   
         </div>
     </div>
   );

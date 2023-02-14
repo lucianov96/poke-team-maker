@@ -2,6 +2,18 @@ export const navBar = {
     backgroundColor: "#880000",
   }
 
+export const drawer = {
+  ".css-4t3x6l-MuiPaper-root-MuiDrawer-paper": {
+    backgroundColor: "#880000 !important",
+  },
+}
+
+export const drawerText = {
+  color: "#ffffff"
+}
+
+
+
 export const collapsableSection = {
   display: "flex",
   cursor: "pointer",
@@ -16,5 +28,5 @@ export const arrowIcon = {
 }
 
 export const separator = {
-  minHeight: "6em"
+  minHeight: "3em"
 }

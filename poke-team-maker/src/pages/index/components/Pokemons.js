@@ -6,11 +6,11 @@ export const Pokemons = () => {
 
     const pokemonList = [
         {id: 1, name: "Bulbassaur"},
-        {id: 1, name: "Bulbassaur"},
-        {id: 1, name: "Bulbassaur"},
-        {id: 1, name: "Bulbassaur"},
-        {id: 1, name: "Bulbassaur"},
-        {id: 1, name: "Bulbassaur"},
+        {id: 2, name: "Bulbassaur"},
+        {id: 6, name: "Bulbassaur"},
+        {id: 28, name: "Bulbassaur"},
+        {id: 180, name: "Bulbassaur"},
+        {id: 381, name: "Bulbassaur"},
     ]
 
     return (

@@ -12,7 +12,7 @@ export const Pokemon = ({id, name}) => {
 
     return (
         <>
-            <Grid item xs={4} sx={pokemonImage}>
+            <Grid item md={4} sm={6} xs={12} sx={pokemonImage}>
                 <img style={pointerImage} src={`pokemon/${id}.png`}/>
                 <div>{name}</div>
             </Grid>

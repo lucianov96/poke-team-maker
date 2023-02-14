@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Grid, FormControl, TextField, Button, InputLabel, MenuItem, Select } from '@mui/material';
-import {button, block} from "../../../styles/styles"
+import {button, secondaryButton, block} from "../../../styles/styles"
 import { TypePicture } from '../../../components/TypePicture';
 
 export const Filters = () => {
@@ -149,6 +149,9 @@ export const Filters = () => {
                 <Grid item xs={12}>
                     <Button sx={button}>
                         Search
+                    </Button>
+                    <Button sx={secondaryButton}>
+                        Clear
                     </Button>
                 </Grid>
             </Grid>
