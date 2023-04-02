@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
 import { progressBar, progressBarContainer, statValue } from '../styles/styles';
 import { Grid } from '@mui/material';
+import React from 'react';
 
 type Props = {
     name: string;
