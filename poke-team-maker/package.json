@@ -18,7 +18,8 @@
     "react-dom": "^18.2.0",
     "react-scripts": "^2.1.3",
     "typeface-roboto": "^1.1.13",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "axios": "^0.27.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -49,6 +50,7 @@
   ],
   "devDependencies": {
     "eslint": "5.12.0",
-    "eslint-plugin-react": "^7.31.11"
+    "eslint-plugin-react": "^7.31.11",
+    "typescript": "^4.5.4"
   }
 }

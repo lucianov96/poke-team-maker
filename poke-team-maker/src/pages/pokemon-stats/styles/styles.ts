@@ -3,7 +3,7 @@ export const progressBarContainer = {
     paddingBottom: "0.2em",
 }
 
-export const progressBar = (stat) => {
+export const progressBar = (stat: any) => {
     return {
         width: `${(stat * 100 / 200)}%`,
         borderRadius: "5px",

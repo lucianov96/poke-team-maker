@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { AppBar, Toolbar, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { navBar, drawer, drawerText } from './styles/styles';
@@ -14,11 +14,11 @@ type Props = {
   setPage: (page: number) => void;
 };
 
-export const NavBar = ({setPage}) => {
+export const NavBar: FC<Props> = ({setPage}) => {
 
     const [state, setState] = React.useState(false);
 
-    const openPage = (page) => {
+    const openPage = (page: number) => {
         setPage(page);
         setState(false);
     }
