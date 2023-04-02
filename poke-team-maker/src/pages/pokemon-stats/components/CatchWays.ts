@@ -7,7 +7,9 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { tableHeader, tableHeaderCell, tableRow } from '../../../styles/styles';
 
-
+type Props = {
+    rows: any;
+}
 
 export const CatchWays = ({rows}) => {
     return (
