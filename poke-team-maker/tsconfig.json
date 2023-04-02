@@ -20,11 +20,6 @@
     "jsx": "preserve"
   },
   "include": [
-    "*/.ts",
-    "*/.tsx",
-    "pages/_error.js"],
-    "exclude": [
-      "node_modules"
-    ]
-  
+    "src"
+  ]
 }

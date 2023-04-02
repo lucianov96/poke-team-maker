@@ -1,7 +1,6 @@
 import { pokemonApi } from "../api/pokemon";
 import { Pokemon } from "./models/Pokemon";
 
-
 export type PokemonRequest = {
     type1: string | null,
     type2: string | null,
@@ -21,9 +20,8 @@ export type PokemonRequest = {
     speedValue: string | null
 }
 
-export const getPokemons = async (request: PokemonRequest) => {
-    return pokemonApi.get<Pokemon>(`/pokemon?${buildParams(request)}`)
-    .then(response => response.data)
+export const getPokemons = async (request: PokemonRequest ) => {
+    return pokemonApi.get<Pokemon[]>(`/pokemon?${buildParams(request)}`)
 }
 
 const buildParams = (params: PokemonRequest) => {
@@ -44,4 +42,5 @@ const buildParams = (params: PokemonRequest) => {
     if (params.spDefenseValue) urlParams.append("spDefenseValue", params.spDefenseValue);
     if (params.speed) urlParams.append("speed", params.speed);
     if (params.speedValue) urlParams.append("speedValue", params.speedValue);
+    return urlParams;
 }

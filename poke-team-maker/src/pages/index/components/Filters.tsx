@@ -14,35 +14,35 @@ export const Filters = () => {
     const [spDefenseCondition, setSDefenseCondition] = useState('');
     const [speedCondition, setSpeedCondition] = useState('');
 
-    const handleChangeType = (event) => {
+    const handleChangeType = (event: any) => {
         setType(event.target.value);
     };
 
-    const handleChangeType2 = (event) => {
+    const handleChangeType2 = (event: any) => {
         setType2(event.target.value);
     };
 
-    const handleChangePsCondition = (event) => {
+    const handleChangePsCondition = (event: any) => {
         setPsCondition(event.target.value);
     };
 
-    const handleChangeAttackCondition = (event) => {
+    const handleChangeAttackCondition = (event: any) => {
         setAttackCondition(event.target.value);
     };
 
-    const handleChangeDefenseCondition = (event) => {
+    const handleChangeDefenseCondition = (event: any) => {
         setDefenseCondition(event.target.value);
     };
 
-    const handleChangeSpAttackCondition = (event) => {
+    const handleChangeSpAttackCondition = (event: any) => {
         setSpAttackCondition(event.target.value);
     };
 
-    const handleChangeSpDefenseCondition = (event) => {
+    const handleChangeSpDefenseCondition = (event: any) => {
         setSDefenseCondition(event.target.value);
     };
 
-    const handleChangeSpeedCondition = (event) => {
+    const handleChangeSpeedCondition = (event: any) => {
         setSpeedCondition(event.target.value);
     };
 

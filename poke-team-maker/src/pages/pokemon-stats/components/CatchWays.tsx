@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
@@ -11,7 +11,7 @@ type Props = {
     rows: any;
 }
 
-export const CatchWays = ({rows}) => {
+export const CatchWays: FC<Props> = ({rows}) => {
     return (
         <TableContainer>
             <Table aria-label="customized table">
@@ -23,7 +23,7 @@ export const CatchWays = ({rows}) => {
                 </TableRow>
                 </TableHead>
                 <TableBody>
-                {rows.map((row) => (
+                {rows.map((row: any) => (
                     <TableRow sx={tableRow}>
                     <TableCell component="th" scope="row">
                         {row.pokemonVersion}

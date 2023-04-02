@@ -1,13 +1,13 @@
 import { progressBar, progressBarContainer, statValue } from '../styles/styles';
 import { Grid } from '@mui/material';
-import React from 'react';
+import React, { FC } from 'react';
 
 type Props = {
     name: string;
     value: number;
 }
 
-export const Stat = ({name, value}) => {
+export const Stat: FC<Props> = ({name, value}) => {
 
     return (
         <>

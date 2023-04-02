@@ -43,7 +43,7 @@ export const PokemonStatsIndex = () => {
 
     return (
         <>
-            <h1 style={h1}>Lucario's settings</h1>
+            <h1>Lucario's settings</h1>
             <Grid container>
                 <Grid item xs={12} md={1.5} style={{textAlign: "center"}}>
                     <div>
@@ -96,11 +96,11 @@ export const PokemonStatsIndex = () => {
             </Grid>
             <Separator/>
             <CollapsableSection text={"Movements"} open={movementsOpen} onClick={handleMovementsOpen}/>
-                <Collapse in={movementsOpen} out={movementsOpen}>
+                <Collapse in={movementsOpen}>
                     <Movements rows={movements}/>
                 </Collapse>
             <CollapsableSection text={"Catch ways"} open={catchWaysOpen} onClick={handleCatchWaysOpen}/>
-                <Collapse in={catchWaysOpen} out={catchWaysOpen}>
+                <Collapse in={catchWaysOpen}>
                     <CatchWays rows={catchWays}/>
                 </Collapse>
         </>

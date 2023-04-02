@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
@@ -6,12 +6,14 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { TypePicture } from '../../../components/TypePicture';
-import { MovementTypePicture } from '../../../components/MovementTypePicture copy';
+import { MovementTypePicture } from '../../../components/MovementTypePicture';
 import { tableHeader, tableHeaderCell, tableRow } from '../../../styles/styles';
 
+type Props = {
+    rows: any;
+}
 
-
-export const Movements = ({rows}) => {
+export const Movements: FC<Props> = ({rows}) => {
     return (
         <TableContainer>
             <Table aria-label="customized table">
@@ -26,7 +28,7 @@ export const Movements = ({rows}) => {
                 </TableRow>
                 </TableHead>
                 <TableBody>
-                {rows.map((row) => (
+                {rows.map((row: any) => (
                     <TableRow sx={tableRow}>
                     <TableCell component="th" scope="row">
                         {row.name}

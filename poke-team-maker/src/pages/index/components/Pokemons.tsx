@@ -1,19 +1,19 @@
 import React, {FC, useState} from 'react';
 import { Grid } from '@mui/material';
 import { Pokemon } from './Pokemon';
+import { Pokemon as PokemonModel} from '../../services/models/Pokemon';
+
 
 type Props = {
-    list: PokemonRequest[]
+    list: PokemonModel[]
 }
 
-export const Pokemons = (list) => {
-
-    const pokemonList = list;
+export const Pokemons: FC<Props> = ({list}) => {
 
     return (
         <>
             <Grid container>
-                {pokemonList.map((pokemon) => {
+                {list.map((pokemon: { id: number; name: string; }) => {
                     return <Pokemon id={pokemon.id} name={pokemon.name}></Pokemon>
                 })}
             </Grid>

@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
+import React, {FC, useState} from 'react';
 import { Grid } from '@mui/material';
 import {pokemonImage, pointerImage} from "../../../styles/styles"
 
 type Props = {
-    id: string;
+    id: number;
     name: string;
   };
   
 
-export const Pokemon = ({id, name}) => {
+export const Pokemon: FC<Props> = ({id, name}) => {
 
     return (
         <>
