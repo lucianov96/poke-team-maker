@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, {FC, useState} from 'react';
 import { Stat } from './Stat';
-import { Grid } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import { effectiveTitle } from '../styles/styles';
 import { Separator } from '../../../components/Separator';
 import { h1, button } from '../../../styles/styles';
@@ -9,8 +9,13 @@ import { Collapse, Button } from '@mui/material';
 import { CollapsableSection } from '../../../components/CollapsableSection';
 import { Movements } from './Movements';
 import { CatchWays } from './CatchWays';
+import { Pokemon } from '../../services/models/Pokemon';
 
-export const PokemonStatsIndex = () => {
+type Props = {
+    pokemon: Pokemon;
+}
+
+export const PokemonStatsIndex: FC<Props> = ({pokemon}) => {
 
     const movements = [
         { name: "Sword dance", type: "normal", movementType: "status", points: "80", accuracy: "100", priority: "0"},
@@ -43,14 +48,14 @@ export const PokemonStatsIndex = () => {
 
     return (
         <>
-            <h1>Lucario's settings</h1>
+            <Typography variant="h1" sx={h1}>{pokemon.name}'s settings</Typography>
             <Grid container>
                 <Grid item xs={12} md={1.5} style={{textAlign: "center"}}>
                     <div>
-                        <img src="pokemon/448.png"/>
+                        <img src={`pokemon/${pokemon.id}.png`}/>
                     </div>
-                    <TypePicture name={"grass"}/>
-                    <TypePicture name={"electric"}/>
+                    <TypePicture name={pokemon.types[0]}/>
+                    {pokemon.types.length > 1 && <TypePicture name={pokemon.types[1]}/>}
                     <div style={{padding: "4px 16px 16px 16px"}}>
                         <Button sx={button}>
                             Add to team
@@ -58,12 +63,12 @@ export const PokemonStatsIndex = () => {
                     </div>
                 </Grid>
                 <Grid item xs={12} md={10.5}>
-                    <Stat name={"PS:"} value={200}/>
-                    <Stat name={"Attack:"} value={180}/>
-                    <Stat name={"Defense:"} value={160}/>
-                    <Stat name={"Sp. Attack:"} value={140}/>
-                    <Stat name={"Sp. Defense:"} value={120}/>
-                    <Stat name={"Speed:"} value={100}/>
+                    <Stat name={"PS:"} value={pokemon.stats.ps}/>
+                    <Stat name={"Attack:"} value={pokemon.stats.attack}/>
+                    <Stat name={"Defense:"} value={pokemon.stats.defense}/>
+                    <Stat name={"Sp. Attack:"} value={pokemon.stats.sp_attack}/>
+                    <Stat name={"Sp. Defense:"} value={pokemon.stats.sp_defense}/>
+                    <Stat name={"Speed:"} value={pokemon.stats.speed}/>
                 </Grid>
             </Grid>
             <Separator/>

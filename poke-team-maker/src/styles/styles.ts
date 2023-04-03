@@ -4,7 +4,7 @@ export const button = {
     color: "#FFFFFF",
     cursor: "pointer",
     display: "inlineBlock",
-    fontWeight: "500", 
+    fontWeight: "bold", 
     width: "100%",
     userSelect: "none",
     border: "0",
@@ -12,6 +12,7 @@ export const button = {
     transition: "box-shadow .2s",
     marginTop: "0.3em",
     marginBottom: "0.3em",
+    fontFamily: "Arial",
     "&:hover": {
         boxShadow: "rgba(253, 76, 0, 0.5) 0 3px 8px",
         transition: ".2s",
@@ -26,7 +27,7 @@ export const button = {
     color: "#880000",
     cursor: "pointer",
     display: "inlineBlock",
-    fontWeight: "500", 
+    fontWeight: "bold",
     width: "100%",
     userSelect: "none",
     border: "0",
@@ -62,8 +63,11 @@ export const block = {
 }
 
 export const h1 = {
+  marginTop: "0",
   textAlign: "center",
-  marginTop: "0"
+  fontSize: "2em",
+  fontFamily: "Arial",
+  fontWeight: "bold"
 }
 
 export const h2 = {

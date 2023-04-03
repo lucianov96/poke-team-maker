@@ -1,5 +1,5 @@
 import { pokemonApi } from "../api/pokemon";
-import { Pokemon } from "./models/Pokemon";
+import { MainPokemon } from "./models/MainPokemon";
 
 export type PokemonRequest = {
     type1: string | null,
@@ -21,7 +21,7 @@ export type PokemonRequest = {
 }
 
 export const getPokemons = async (request: PokemonRequest ) => {
-    return pokemonApi.get<Pokemon[]>(`/pokemon?${buildParams(request)}`)
+    return pokemonApi.get<MainPokemon[]>(`/pokemon?${buildParams(request)}`)
 }
 
 const buildParams = (params: PokemonRequest) => {
