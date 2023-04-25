@@ -7,7 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { TypePicture } from '../../../components/TypePicture';
 import { MovementTypePicture } from '../../../components/MovementTypePicture';
-import { tableHeader, tableHeaderCell, tableRow } from '../../../styles/styles';
+import { tableHeader, tableHeaderCell, tableRow, tableRowCell } from '../../../styles/styles';
 
 type Props = {
     rows: any;
@@ -30,14 +30,12 @@ export const Movements: FC<Props> = ({rows}) => {
                 <TableBody>
                 {rows.map((row: any) => (
                     <TableRow sx={tableRow}>
-                    <TableCell component="th" scope="row">
-                        {row.name}
-                    </TableCell>
-                    <TableCell><TypePicture name={row.type}/></TableCell>
-                    <TableCell><MovementTypePicture name={row.movementType}/></TableCell>
-                    <TableCell>{row.points}</TableCell>
-                    <TableCell>{row.accuracy}</TableCell>
-                    <TableCell>{row.priority}</TableCell>
+                    <TableCell sx={tableRowCell}>{row.name}</TableCell>
+                    <TableCell sx={tableRowCell}><TypePicture name={row.type}/></TableCell>
+                    <TableCell sx={tableRowCell}><MovementTypePicture name={row.movement_type}/></TableCell>
+                    <TableCell sx={tableRowCell}>{row.points}</TableCell>
+                    <TableCell sx={tableRowCell}>{row.accuracy}</TableCell>
+                    <TableCell sx={tableRowCell}>{row.priority > 0 && row.priority}</TableCell>
                     </TableRow>
                 ))}
                 </TableBody>

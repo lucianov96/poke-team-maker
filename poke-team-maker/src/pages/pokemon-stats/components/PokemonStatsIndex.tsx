@@ -10,27 +10,16 @@ import { CollapsableSection } from '../../../components/CollapsableSection';
 import { Movements } from './Movements';
 import { CatchWays } from './CatchWays';
 import { Pokemon } from '../../services/models/Pokemon';
+import { Movement } from '../../services/models/Movement';
+import { Catch } from '../../services/models/Catch';
 
 type Props = {
     pokemon: Pokemon;
+    movements: Movement[];
+    catchWays: Catch[];
 }
 
-export const PokemonStatsIndex: FC<Props> = ({pokemon}) => {
-
-    const movements = [
-        { name: "Sword dance", type: "normal", movementType: "status", points: "80", accuracy: "100", priority: "0"},
-        { name: "Flamethrower", type: "fire", movementType: "special", points: "100", accuracy: "80", priority: "1"},
-        { name: "Lighting bolt", type: "electric", movementType: "special", points: "80", accuracy: "100", priority: "0"},
-        { name: "Surf", type: "water", movementType: "special", points: "80", accuracy: "100", priority: "0"},
-        { name: "Close combat", type: "fighting", movementType: "physical", points: "80", accuracy: "100", priority: "0"},
-        { name: "Ice punch", type: "ice", movementType: "physical", points: "80", accuracy: "100", priority: "0"}
-    ]
-
-    const catchWays = [
-        { pokemonVersion: "Gold", area: "Route 1", way: "walk"},
-        { pokemonVersion: "Blue", area: "Route 1", way: "walk"},
-        { pokemonVersion: "Rubi", area: "Route 1", way: "gift"}
-    ]
+export const PokemonStatsIndex: FC<Props> = ({pokemon, movements, catchWays}) => {
 
     const [movementsOpen, setMovementsOpen] = useState(false);
 
@@ -56,11 +45,13 @@ export const PokemonStatsIndex: FC<Props> = ({pokemon}) => {
                     </div>
                     <TypePicture name={pokemon.types[0]}/>
                     {pokemon.types.length > 1 && <TypePicture name={pokemon.types[1]}/>}
-                    <div style={{padding: "4px 16px 16px 16px"}}>
-                        <Button sx={button}>
-                            Add to team
-                        </Button>
-                    </div>
+                    {/*
+                        <div style={{padding: "4px 16px 16px 16px"}}>
+                            <Button sx={button}>
+                                Add to team
+                            </Button>
+                        </div>
+                    */}
                 </Grid>
                 <Grid item xs={12} md={10.5}>
                     <Stat name={"PS:"} value={pokemon.stats.ps}/>
@@ -72,6 +63,7 @@ export const PokemonStatsIndex: FC<Props> = ({pokemon}) => {
                 </Grid>
             </Grid>
             <Separator/>
+            {/*
             <Grid container>
                 <Grid item xs={12} md sx={effectiveTitle}>
                     <div style={{padding: "16px"}}>Inmune</div>
@@ -99,6 +91,7 @@ export const PokemonStatsIndex: FC<Props> = ({pokemon}) => {
                     <TypePicture name={"fairy"}/>
                 </Grid>
             </Grid>
+            */}
             <Separator/>
             <CollapsableSection text={"Movements"} open={movementsOpen} onClick={handleMovementsOpen}/>
                 <Collapse in={movementsOpen}>

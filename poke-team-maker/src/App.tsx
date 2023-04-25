@@ -3,7 +3,9 @@ import './App.css';
 import { NavBar } from './components/NavBar';
 import { PokemonIndex } from './pages/index/components/PokemonIndex';
 import { PokemonStatsIndex } from './pages/pokemon-stats/components/PokemonStatsIndex';
-import { getPokemon } from './pages/services/getPokemon';
+import { getPokemon, getPokemonCatch, getPokemonMovements } from './pages/services/getPokemon';
+import { Catch } from './pages/services/models/Catch';
+import { Movement } from './pages/services/models/Movement';
 import { Pokemon } from './pages/services/models/Pokemon';
 import { block } from './styles/styles';
 
@@ -26,11 +28,23 @@ function App() {
       speed: 0,
     },
   })
+  const [movements, setMovements] = React.useState<Movement[]>([])
+  const [catchWays, setCatchWays] = React.useState<Catch[]>([])
+
 
   useEffect(() => {
     getPokemon(idPokemon)
       .then(response => {
         setPokemon(response.data);
+        getPokemonMovements(idPokemon)
+          .then(response => {
+            setMovements(response.data)
+          })
+        getPokemonCatch(idPokemon)
+          .then(response => {
+            setCatchWays(response.data)
+        })
+
       })
       .catch(error => {
         console.log(error);
@@ -43,7 +57,7 @@ function App() {
       <NavBar setPage={setPage}/>
         <div style={block}>
           {page == 1 && <PokemonIndex setIdPokemon={setIdPokemon} setPage={setPage}/>}
-          {page == 2 && <PokemonStatsIndex pokemon={pokemon}/>}   
+          {page == 2 && <PokemonStatsIndex pokemon={pokemon} movements={movements} catchWays={catchWays}/>}   
         </div>
     </div>
   );

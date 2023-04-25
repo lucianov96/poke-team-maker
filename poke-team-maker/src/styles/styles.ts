@@ -82,7 +82,13 @@ export const tableHeader = {
 
 export const tableHeaderCell = {
   color: "#FFFFFF !important",
-  fontWeight: "bold"
+  fontWeight: "bold",
+  fontSize: "1.1em"
+}
+
+export const tableRowCell = {
+  color: "#000000 !important",
+  fontSize: "1.1em"
 }
 
 export const tableRow = {

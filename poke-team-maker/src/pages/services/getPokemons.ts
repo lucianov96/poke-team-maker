@@ -2,6 +2,7 @@ import { pokemonApi } from "../api/pokemon";
 import { MainPokemon } from "./models/MainPokemon";
 
 export type PokemonRequest = {
+    name: string | null,
     type1: string | null,
     type2: string | null,
     ability1: string | null,
@@ -26,6 +27,7 @@ export const getPokemons = async (request: PokemonRequest ) => {
 
 const buildParams = (params: PokemonRequest) => {
     const urlParams = new URLSearchParams();
+    if (params.name) urlParams.append("name", params.name);
     if (params.type1) urlParams.append("type1", params.type1);
     if (params.type2) urlParams.append("type2", params.type2);
     if (params.ability1) urlParams.append("ability1", params.ability1);

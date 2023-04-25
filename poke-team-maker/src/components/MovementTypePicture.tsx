@@ -7,7 +7,7 @@ type Props = {
 export const MovementTypePicture: FC<Props> = ({name}) => {
     return (
         <div>
-            <img style={{width: "90px"}} src={`movement-types/${name}.svg`}/>
+            <img style={{width: "90px"}} src={`movement-types/${name}.png`}/>
         </div>
     )
 }

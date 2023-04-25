@@ -6,6 +6,7 @@ import { CollapsableSection } from '../../../components/CollapsableSection';
 import { h1 } from '../../../styles/styles';
 import { getPokemons } from '../../services/getPokemons';
 import { MainPokemon } from '../../services/models/MainPokemon';
+import { PokemonFilter } from '../models/PokemonFilter';
 
 type Props = {
     setIdPokemon: (idPokemon: number) => void;
@@ -14,8 +15,29 @@ type Props = {
 
 export const PokemonIndex: FC<Props> = ({setIdPokemon, setPage}) => {
 
+    const [buttonPressed, setButtonPressed] = useState<boolean>(false);
     const [open, setOpen] = useState<boolean>(false);
     const [pokemons, setPokemons] = useState<MainPokemon[]>([]);
+    const [pokemonFilter, setPokemonFilter] = useState<PokemonFilter>({
+            name: "",
+            type1: "",
+            type2: "",
+            ability1: "",
+            ability2: "",
+            ps: "",
+            psValue: "",
+            attack: "",
+            attackValue: "",
+            defense: "",
+            defenseValue: "",
+            spAttack: "",
+            spAttackValue: "",
+            spDefense: "",
+            spDefenseValue: "",
+            speed: "",
+            speedValue: ""
+        }
+    );
 
 
     const handleOpen = () => {
@@ -27,22 +49,23 @@ export const PokemonIndex: FC<Props> = ({setIdPokemon, setPage}) => {
 
     useEffect(() => {
         getPokemons({
-            type1: null,
-            type2: null,
-            ability1: null,
-            ability2: null,
-            ps: null,
-            psValue: null,
-            attack: null,
-            attackValue: null,
-            defense: null,
-            defenseValue: null,
-            spAttack: null,
-            spAttackValue: null,
-            spDefense: null,
-            spDefenseValue: null,
-            speed: null,
-            speedValue: null
+            name: pokemonFilter.name,
+            type1: pokemonFilter.type1,
+            type2: pokemonFilter.type2,
+            ability1: pokemonFilter.ability1,
+            ability2: pokemonFilter.ability2,
+            ps: pokemonFilter.ps,
+            psValue: pokemonFilter.psValue,
+            attack: pokemonFilter.attack,
+            attackValue: pokemonFilter.attackValue,
+            defense: pokemonFilter.defense,
+            defenseValue: pokemonFilter.defenseValue,
+            spAttack: pokemonFilter.spAttack,
+            spAttackValue: pokemonFilter.spAttackValue,
+            spDefense: pokemonFilter.spDefense,
+            spDefenseValue: pokemonFilter.spDefenseValue,
+            speed: pokemonFilter.speed,
+            speedValue: pokemonFilter.speedValue
         })
           .then(response => {
             setPokemons(response.data);
@@ -50,14 +73,14 @@ export const PokemonIndex: FC<Props> = ({setIdPokemon, setPage}) => {
           .catch(error => {
             console.log(error);
           });
-      }, []);
+      }, [buttonPressed]);
 
     return (
         <>
             <Typography variant="h1" sx={h1}>Pokemon finder</Typography>
             <CollapsableSection text={"Filters"} open={open} onClick={handleOpen}/>
             <Collapse in={open}>
-                <Filters/>
+                <Filters pokemonFilter={pokemonFilter} setPokemonFilter={setPokemonFilter} buttonPressed={buttonPressed} setButtonPressed={setButtonPressed}/>
             </Collapse>
             <Pokemons setIdPokemon={setIdPokemon} setPage={setPage} list={pokemons}/>
         </>

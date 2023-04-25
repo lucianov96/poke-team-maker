@@ -26,9 +26,9 @@ export const CatchWays: FC<Props> = ({rows}) => {
                 {rows.map((row: any) => (
                     <TableRow sx={tableRow}>
                     <TableCell component="th" scope="row">
-                        {row.pokemonVersion}
+                        {row.pokemon_version}
                     </TableCell>
-                    <TableCell>{row.area}</TableCell>
+                    <TableCell>{row.location}</TableCell>
                     <TableCell>{row.way}</TableCell>
                     </TableRow>
                 ))}
