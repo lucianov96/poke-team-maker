@@ -71,6 +71,7 @@ export const h1 = {
 }
 
 export const h2 = {
+  textAlign: "center",
   fontSize: "1.2em",
   marginTop: "0.3em",
   marginBottom: "0.3em"
@@ -91,8 +92,6 @@ export const tableRowCell = {
   fontSize: "1.1em"
 }
 
-export const tableRow = {
-  '&:nth-of-type(odd)': {
-    backgroundColor: "#EEEEEE",
-  },
+export const palette = {
+  error: "#770000"
 }

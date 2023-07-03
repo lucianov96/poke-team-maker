@@ -18,7 +18,7 @@ export const collapsableSection = {
   display: "flex",
   cursor: "pointer",
   padding: "12px",
-  marginBottom: "12px",
+  marginBottom: "24px",
   fontSize: "1.2em",
   borderBottom: "1px solid black",
 }

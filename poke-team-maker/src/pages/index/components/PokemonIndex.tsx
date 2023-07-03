@@ -18,6 +18,7 @@ export const PokemonIndex: FC<Props> = ({setIdPokemon, setPage}) => {
     const [buttonPressed, setButtonPressed] = useState<boolean>(false);
     const [open, setOpen] = useState<boolean>(false);
     const [pokemons, setPokemons] = useState<MainPokemon[]>([]);
+    const [error, setError] = useState<string | null>(null);
     const [pokemonFilter, setPokemonFilter] = useState<PokemonFilter>({
             name: "",
             type1: "",
@@ -69,9 +70,10 @@ export const PokemonIndex: FC<Props> = ({setIdPokemon, setPage}) => {
         })
           .then(response => {
             setPokemons(response.data);
+            setError(null);
           })
           .catch(error => {
-            console.log(error);
+            setError(error.response.data.message);
           });
       }, [buttonPressed]);
 
@@ -80,7 +82,7 @@ export const PokemonIndex: FC<Props> = ({setIdPokemon, setPage}) => {
             <Typography variant="h1" sx={h1}>Pokemon finder</Typography>
             <CollapsableSection text={"Filters"} open={open} onClick={handleOpen}/>
             <Collapse in={open}>
-                <Filters pokemonFilter={pokemonFilter} setPokemonFilter={setPokemonFilter} buttonPressed={buttonPressed} setButtonPressed={setButtonPressed}/>
+                <Filters pokemonFilter={pokemonFilter} setPokemonFilter={setPokemonFilter} buttonPressed={buttonPressed} setButtonPressed={setButtonPressed} error={error}/>
             </Collapse>
             <Pokemons setIdPokemon={setIdPokemon} setPage={setPage} list={pokemons}/>
         </>

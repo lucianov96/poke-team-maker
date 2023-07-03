@@ -1,6 +1,6 @@
 import React, {FC, useState} from 'react';
-import { Grid, FormControl, TextField, Button, InputLabel, MenuItem, Select } from '@mui/material';
-import {button, secondaryButton, block} from "../../../styles/styles"
+import { Grid, FormControl, TextField, Button, InputLabel, MenuItem, Select, Typography } from '@mui/material';
+import {button, secondaryButton, block, h2, palette} from "../../../styles/styles"
 import { TypePicture } from '../../../components/TypePicture';
 import { PokemonFilter } from '../models/PokemonFilter';
 
@@ -9,9 +9,10 @@ type Props = {
     setPokemonFilter: (pokemonFilter: PokemonFilter) => void;
     buttonPressed: boolean; 
     setButtonPressed: (buttonPressed: boolean) => void;
+    error: string | null
 }
 
-export const Filters: FC<Props> = ({pokemonFilter, setPokemonFilter, buttonPressed, setButtonPressed}) => {
+export const Filters: FC<Props> = ({pokemonFilter, setPokemonFilter, buttonPressed, setButtonPressed, error}) => {
 
     const handleChangeName = (event: any) => {
         setPokemonFilter({...pokemonFilter, name: event.target.value});
@@ -86,10 +87,36 @@ export const Filters: FC<Props> = ({pokemonFilter, setPokemonFilter, buttonPress
         else setButtonPressed(true); 
     }
 
+    const clear = () => {
+        setPokemonFilter(
+            {
+                name: "",
+                type1: "",
+                type2: "",
+                ability1: "",
+                ability2: "",
+                ps: "",
+                psValue: "",
+                attack: "",
+                attackValue: "",
+                defense: "",
+                defenseValue: "",
+                spAttack: "",
+                spAttackValue: "",
+                spDefense: "",
+                spDefenseValue: "",
+                speed: "",
+                speedValue: ""
+            }
+        )
+        if(buttonPressed) setButtonPressed(false); 
+        else setButtonPressed(true); 
+    }
+
     const textFieldList = [
-        {name: "Name", onChange: handleChangeName},
-        {name: "Ability 1", onChange: handleChangeAbility1},
-        {name: "Ability 2", onChange: handleChangeAbility2}, 
+        {name: "Name", onChange: handleChangeName, value: pokemonFilter.name},
+        {name: "Ability 1", onChange: handleChangeAbility1, value: pokemonFilter.ability1},
+        {name: "Ability 2", onChange: handleChangeAbility2, value: pokemonFilter.ability2}, 
     ]
 
     const selectTypeList = [
@@ -98,12 +125,12 @@ export const Filters: FC<Props> = ({pokemonFilter, setPokemonFilter, buttonPress
     ]
 
     const selectConditionList = [
-        {labelSelect: "PS condition", labelTextField: "PS value", onChangeCondition: handleChangePsCondition, onChangeValue: handleChangePsValue, condition: pokemonFilter.ps},
-        {labelSelect: "Attack condition", labelTextField: "Attack value", onChangeCondition: handleChangeAttackCondition, onChangeValue: handleChangeAttackValue, condition: pokemonFilter.attack},
-        {labelSelect: "Defense condition", labelTextField: "Defense value", onChangeCondition: handleChangeDefenseCondition, onChangeValue: handleChangeDefenseValue, condition: pokemonFilter.defense},
-        {labelSelect: "Sp attack condition", labelTextField: "Sp attack value", onChangeCondition: handleChangeSpAttackCondition, onChangeValue: handleChangeSpAttackValue, condition: pokemonFilter.spAttack},
-        {labelSelect: "Sp defense condition", labelTextField: "Sp defense value", onChangeCondition: handleChangeSpDefenseCondition, onChangeValue: handleChangeSpDefenseValue, condition: pokemonFilter.spDefense},
-        {labelSelect: "Speed condition", labelTextField: "Speed value", onChangeCondition: handleChangeSpeedCondition, onChangeValue: handleChangeSpeedValue, condition: pokemonFilter.speed}
+        {labelSelect: "PS condition", labelTextField: "PS value", onChangeCondition: handleChangePsCondition, onChangeValue: handleChangePsValue, condition: pokemonFilter.ps, value: pokemonFilter.psValue},
+        {labelSelect: "Attack condition", labelTextField: "Attack value", onChangeCondition: handleChangeAttackCondition, onChangeValue: handleChangeAttackValue, condition: pokemonFilter.attack, value: pokemonFilter.attackValue},
+        {labelSelect: "Defense condition", labelTextField: "Defense value", onChangeCondition: handleChangeDefenseCondition, onChangeValue: handleChangeDefenseValue, condition: pokemonFilter.defense, value: pokemonFilter.defenseValue},
+        {labelSelect: "Sp attack condition", labelTextField: "Sp attack value", onChangeCondition: handleChangeSpAttackCondition, onChangeValue: handleChangeSpAttackValue, condition: pokemonFilter.spAttack, value: pokemonFilter.spAttackValue},
+        {labelSelect: "Sp defense condition", labelTextField: "Sp defense value", onChangeCondition: handleChangeSpDefenseCondition, onChangeValue: handleChangeSpDefenseValue, condition: pokemonFilter.spDefense, value: pokemonFilter.spDefenseValue},
+        {labelSelect: "Speed condition", labelTextField: "Speed value", onChangeCondition: handleChangeSpeedCondition, onChangeValue: handleChangeSpeedValue, condition: pokemonFilter.speed, value: pokemonFilter.speedValue}
     ]
 
     const typesList = [
@@ -139,7 +166,7 @@ export const Filters: FC<Props> = ({pokemonFilter, setPokemonFilter, buttonPress
                 {textFieldList.map((textField) => {
                     return <Grid item xs={12}>
                         <FormControl fullWidth>
-                            <TextField  type="text" label={textField.name} onChange={textField.onChange} />
+                            <TextField  type="text" label={textField.name} onChange={textField.onChange} value={textField.value}/>
                         </FormControl>
                     </Grid>
                 })}
@@ -154,6 +181,9 @@ export const Filters: FC<Props> = ({pokemonFilter, setPokemonFilter, buttonPress
                             onChange={selectType.onChange}
                             sx={{width: "100%"}}
                             >
+                                <MenuItem value={""}>
+                                    
+                                </MenuItem>
                                 {typesList.map((type) => {
                                     return <MenuItem value={type.value}>
                                         <TypePicture name={type.value}/>
@@ -183,7 +213,7 @@ export const Filters: FC<Props> = ({pokemonFilter, setPokemonFilter, buttonPress
                         </Grid>
                         <Grid item xs={6}>
                             <FormControl fullWidth>
-                                <TextField  type="number" label={selectCondition.labelTextField} onChange={selectCondition.onChangeValue} />
+                                <TextField  type="number" label={selectCondition.labelTextField} onChange={selectCondition.onChangeValue} value={selectCondition.value}/>
                             </FormControl>
                         </Grid>
                     </>
@@ -192,9 +222,12 @@ export const Filters: FC<Props> = ({pokemonFilter, setPokemonFilter, buttonPress
                     <Button sx={button} onClick={() => search()}>
                         Search
                     </Button>
-                    <Button sx={secondaryButton}>
+                    <Button sx={secondaryButton} onClick={() => clear()}>
                         Clear
                     </Button>
+                    {error != null && <Typography variant="h3" sx={{...h2, color: palette.error, padding: "10px"}}>
+                       {error}
+                    </Typography>}
                 </Grid>
             </Grid>
         </div>

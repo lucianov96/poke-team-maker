@@ -7,7 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { TypePicture } from '../../../components/TypePicture';
 import { MovementTypePicture } from '../../../components/MovementTypePicture';
-import { tableHeader, tableHeaderCell, tableRow, tableRowCell } from '../../../styles/styles';
+import { tableHeader, tableHeaderCell, tableRowCell } from '../../../styles/styles';
 
 type Props = {
     rows: any;
@@ -15,7 +15,7 @@ type Props = {
 
 export const Movements: FC<Props> = ({rows}) => {
     return (
-        <TableContainer>
+        <TableContainer sx={{marginBottom: "48px"}}>
             <Table aria-label="customized table">
                 <TableHead sx={tableHeader}>
                 <TableRow>
@@ -29,7 +29,7 @@ export const Movements: FC<Props> = ({rows}) => {
                 </TableHead>
                 <TableBody>
                 {rows.map((row: any) => (
-                    <TableRow sx={tableRow}>
+                    <TableRow>
                     <TableCell sx={tableRowCell}>{row.name}</TableCell>
                     <TableCell sx={tableRowCell}><TypePicture name={row.type}/></TableCell>
                     <TableCell sx={tableRowCell}><MovementTypePicture name={row.movement_type}/></TableCell>

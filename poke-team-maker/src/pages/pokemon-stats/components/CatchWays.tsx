@@ -5,35 +5,42 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { tableHeader, tableHeaderCell, tableRow } from '../../../styles/styles';
+import { tableHeader, tableHeaderCell, tableRowCell } from '../../../styles/styles';
+import { NoResultsMessage } from '../../../components/NoResultsMessage';
+import { Catch } from '../../services/models/Catch';
 
 type Props = {
-    rows: any;
+    rows: Catch[];
 }
 
 export const CatchWays: FC<Props> = ({rows}) => {
     return (
-        <TableContainer>
-            <Table aria-label="customized table">
-                <TableHead sx={tableHeader}>
-                <TableRow>
-                    <TableCell sx={tableHeaderCell}>Pokemon version</TableCell>
-                    <TableCell sx={tableHeaderCell}>Area</TableCell>
-                    <TableCell sx={tableHeaderCell}>Way</TableCell>
-                </TableRow>
-                </TableHead>
-                <TableBody>
-                {rows.map((row: any) => (
-                    <TableRow sx={tableRow}>
-                    <TableCell component="th" scope="row">
-                        {row.pokemon_version}
-                    </TableCell>
-                    <TableCell>{row.location}</TableCell>
-                    <TableCell>{row.way}</TableCell>
+        <>
+            { rows.length == 0 
+                ? <NoResultsMessage message={"No catch ways found"}/> 
+            : <TableContainer>
+                <Table aria-label="customized table">
+                    <TableHead sx={tableHeader}>
+                    <TableRow>
+                        <TableCell sx={tableHeaderCell}>Pokemon version</TableCell>
+                        <TableCell sx={tableHeaderCell}>Area</TableCell>
+                        <TableCell sx={tableHeaderCell}>Way</TableCell>
                     </TableRow>
-                ))}
-                </TableBody>
-            </Table>
-    </TableContainer>
+                    </TableHead>
+                    <TableBody>
+                    {rows.map((row: any) => (
+                        <TableRow>
+                        <TableCell sx={tableRowCell}>
+                            {row.pokemon_version}
+                        </TableCell>
+                        <TableCell sx={tableRowCell}>{row.location}</TableCell>
+                        <TableCell sx={tableRowCell}>{row.way}</TableCell>
+                        </TableRow>
+                    ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+            }
+        </>
     )
 }
